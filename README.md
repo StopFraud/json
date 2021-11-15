@@ -30,4 +30,4 @@ Docker:
 docker pull ghcr.io/stopfraud/json:main
 
 
-docker run -it --rm ghcr.io/stopfraud/json:main
+docker run -p 8000:8000 -it --rm ghcr.io/stopfraud/json:main
