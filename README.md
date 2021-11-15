@@ -28,4 +28,6 @@ microservice will serve as http service at port 8000 and will respond with rando
 Docker:
 
 docker pull ghcr.io/stopfraud/json:main
+
+
 docker run -it --rm ghcr.io/stopfraud/json:main
