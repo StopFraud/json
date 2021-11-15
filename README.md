@@ -4,11 +4,10 @@ requirements
 
 python -m pip install phone_gen transliterate 
 
-microservice will serve as http service at port 8000 and will respond with random life-like data, e..g
+microservice will serve as http service at port 8000 and will respond with random life-like data, encoded as utf-16 e..g
 
 
 {
-
     "name": "Пелагея",
     
     "surname": "Корнева",
@@ -21,7 +20,6 @@ microservice will serve as http service at port 8000 and will respond with rando
     
     "phrase": "По поводу последней ссылки",
     
-    "phrase2": "вывод средств"
-    
+    "phrase2": "вывод средств"   
 }
 
