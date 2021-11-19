@@ -180,7 +180,7 @@ def new_data():
     j["name"]=name
     j["surname"]=surname
     j["phone_full"]=phone_full
-    j["phone_full"]=phone_short
+    j["phone_short"]=phone_short
     j["email"]=email
     j["password"]=password
     j["phrase"]=get_phrase()
