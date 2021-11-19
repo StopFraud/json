@@ -1,4 +1,4 @@
-import requests, random,json
+import requests, random,json,re
 from phone_gen import PhoneNumber
 from transliterate import translit, get_available_language_codes
 
@@ -199,6 +199,10 @@ import json
 
 class RequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
+        if None != re.search('/api/country/*', self.path):
+            country = str(self.path.split('/')[-1])
+            print("country   "+country)
+
         json_object=new_data()
         parsed_path = urlparse(self.path)
         self.send_response(200)
