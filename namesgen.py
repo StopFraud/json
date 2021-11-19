@@ -108,7 +108,7 @@ def get_phone_short(country):
 
     tn2=ph.get_number(full=False)
     phone_short=ph.get_number()
-    return phone_short
+    return tn2
 
 
 
