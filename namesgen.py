@@ -99,6 +99,18 @@ def get_phone_full(country):
     phone_full=ph.get_number()
     return phone_full
 
+def get_phone_short(country):
+#    country=countries[random.randint(1,len(countries)-1)].replace('\n', '')
+#    _log(country)
+
+    #phone # depends on conutry
+    ph=PhoneNumber(country)
+
+    tn2=ph.get_number(full=False)
+    phone_short=ph.get_number()
+    return phone_short
+
+
 
 def get_email():
     domain=random.choice(domains)
@@ -158,6 +170,7 @@ def new_data():
     final_name=get_final_name_from_name_surname(name, surname)
     country='RU'
     phone_full=get_phone_full(country)
+    phone_short=get_phone_short(country)
     email=get_email_from_final_name(final_name)
     password=get_password()
 #    email2=get_email()
@@ -167,6 +180,7 @@ def new_data():
     j["name"]=name
     j["surname"]=surname
     j["phone_full"]=phone_full
+    j["phone_full"]=phone_short
     j["email"]=email
     j["password"]=password
     j["phrase"]=get_phrase()
