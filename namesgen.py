@@ -47,12 +47,12 @@ domains=['mail.ru','yandex.ru', 'rambler.ru', 'outlook.com', 'gmail.com', 'hotma
 'mail.ru','yandex.ru', 'rambler.ru', 'outlook.com', 'gmail.com', 'hotmail.com','yahoo.com'\
  'cyberservices.com', 'protestant.com', 'ya.ru','box.az','byke.com','chez.com','email.ru','gmx.net','goldmail.ru',\
 'sendmail.ru','sendmail.com','gold.az','mail.lv','mail.lt','tyt.by','mail.by','rambler.lv','rambler.cz','outlook.ru','tut.by',\
-'mail.ru','yandex.ru', 'rambler.ru', 'outlook.com', 'gmail.com', 'hotmail.com','yahoo.com'\
+'mail.ru','yandex.ru', 'rambler.ru', 'outlook.com', 'gmail.com', 'hotmail.com','yahoo.com',\
 'inet.ru','bigmailbox.com','lycos.com','netaddress.com','techemail.com','yandex.kz','yandex.lv','yandex.com','yandex.az','yandex.tr','ya.az',\
-'mail.ru','yandex.ru', 'rambler.ru', 'outlook.com', 'gmail.com', 'hotmail.com','yahoo.com'\
+'mail.ru','yandex.ru', 'rambler.ru', 'outlook.com', 'gmail.com', 'hotmail.com','yahoo.com',\
 'aport.ru','chat.ru','newmail.ru','sitek.net','zmail.ru','id.ru','ok.ru', 'ru.ru','icloud.com','thunderbird.net','yandex.com','zoho.com',\
 'gmxmail.com','trustifi.com','mail.com','mailfence.com','outlook.ru','hotmail.ru','gmail.ru','fastmail.com','fastmail.ru','tutanota.com',\
-'posteo.com','mailbox.org','mailbox.com','mailbox.ru','zohomail.ru','kolabnow.com']
+'posteo.com','mailbox.org','mailbox.com','mailbox.ru','zohomail.ru','kolabnow.com','pochta.ru','post.ru']
 
 
 
