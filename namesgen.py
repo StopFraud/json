@@ -50,7 +50,9 @@ domains=['mail.ru','yandex.ru', 'rambler.ru', 'outlook.com', 'gmail.com', 'hotma
 'mail.ru','yandex.ru', 'rambler.ru', 'outlook.com', 'gmail.com', 'hotmail.com','yahoo.com'\
 'inet.ru','bigmailbox.com','lycos.com','netaddress.com','techemail.com','yandex.kz','yandex.lv','yandex.com','yandex.az','yandex.tr','ya.az',\
 'mail.ru','yandex.ru', 'rambler.ru', 'outlook.com', 'gmail.com', 'hotmail.com','yahoo.com'\
-'aport.ru','chat.ru','newmail.ru','sitek.net','zmail.ru','id.ru','ok.ru', 'ru.ru']
+'aport.ru','chat.ru','newmail.ru','sitek.net','zmail.ru','id.ru','ok.ru', 'ru.ru','icloud.com','thunderbird.net','yandex.com','zoho.com',\
+'gmxmail.com','trustifi.com','mail.com','mailfence.com','outlook.ru','hotmail.ru','gmail.ru','fastmail.com','fastmail.ru','tutanota.com',\
+'posteo.com','mailbox.org','mailbox.com','mailbox.ru','zohomail.ru','kolabnow.com']
 
 
 
