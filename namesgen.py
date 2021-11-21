@@ -163,6 +163,17 @@ def get_phrase():
 
 
 
+def get_final_name(name, surname):
+    dice=random.choice([1,2,3])
+#    _log (dice)
+    if (dice==1):
+        final_name=name
+    if (dice==2):
+        final_name=name+" "+surname
+    if (dice==3):
+        final_name=surname+" "+name
+    return final_name
+
 
 def new_data():
     name= get_name()
@@ -173,12 +184,14 @@ def new_data():
     phone_short=get_phone_short(country)
     email=get_email_from_final_name(final_name)
     password=get_password()
+    final_name=get_final_name(name, surname)
 #    email2=get_email()
     print(name,surname, final_name, phone_full,email)
-
+   
     j={}
     j["name"]=name
     j["surname"]=surname
+    j["final_name"]=final_name
     j["phone_full"]=phone_full
     j["phone_short"]=phone_short
     j["email"]=email
