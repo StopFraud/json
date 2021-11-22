@@ -1,4 +1,4 @@
-import requests, random,json,re
+import requests, random,json,re,pycountry
 from phone_gen import PhoneNumber
 from transliterate import translit, get_available_language_codes
 
@@ -178,6 +178,7 @@ def get_final_name(name, surname):
 
 
 def new_data(country_f):
+    country_f=country_f.replace("\n","")
     name= get_name()
     surname=get_surname()
     final_name=get_final_name_from_name_surname(name, surname)
@@ -199,7 +200,10 @@ def new_data(country_f):
     j["password"]=password
     j["phrase"]=get_phrase()
     j["phrase2"]=get_phrase()
-    j["country_full_en"]=country_f.replace("\n","")
+    j["country_full_en"]=country_f
+    co=pycountry.countries.get(name=country_f)
+    co=co.alpha_2
+    j["country_alpha_2"]=str(co)
     json_object = json.dumps(j, indent = 4) 
     print(json_object)
     return json_object
