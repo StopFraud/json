@@ -1,4 +1,4 @@
-import requests, random,json,re,pycountry
+import requests, random,json,re,pytz
 from phone_gen import PhoneNumber
 from transliterate import translit, get_available_language_codes
 
@@ -201,9 +201,14 @@ def new_data(country_f):
     j["phrase"]=get_phrase()
     j["phrase2"]=get_phrase()
     j["country_full_en"]=country_f
-    co=pycountry.countries.get(name=country_f)
-    co=co.alpha_2
-    j["country_alpha_2"]=str(co)
+
+
+
+#    country_f
+#    print(co)
+#    co='RU'
+#    co=co.alpha_2
+    j["country_alpha_2"]=str(names_alpha2[country_f])
     json_object = json.dumps(j, indent = 4) 
     print(json_object)
     return json_object
@@ -218,14 +223,14 @@ import json
 
 class RequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
-        country='Russia'
+        country_r='Russia'
         if None != re.search('/api/country/*', self.path):
-            country = str(self.path.split('/')[-1])
-            print("country   "+country)
-            if country=="random":
-                country=random.choice(countries)
+            country_r = str(self.path.split('/')[-1])
+            print("country   "+country_r)
+            if country_r=="random":
+                country_r=random.choice(countries)
 
-        json_object=new_data(country)
+        json_object=new_data(country_r)
         parsed_path = urlparse(self.path)
         self.send_response(200)
         self.end_headers()
@@ -260,6 +265,16 @@ class RequestHandler(BaseHTTPRequestHandler):
 #            'body': data
 #        }).encode())
         return
+
+aplha2_names={}
+names_alpha2={}
+for key, val in pytz.country_names.items():
+    print(key, '=', val, end=',')
+    aplha2_names[key]=val
+    names_alpha2[val]=key
+
+
+
 
 if __name__ == '__main__':
     server = HTTPServer(('0.0.0.0', 8000), RequestHandler)
