@@ -1,4 +1,5 @@
 import requests, random,json,re,pytz
+from urllib.parse import unquote
 from phone_gen import PhoneNumber
 from transliterate import translit, get_available_language_codes
 
@@ -200,6 +201,7 @@ def new_data(country_f):
     j["password"]=password
     j["phrase"]=get_phrase()
     j["phrase2"]=get_phrase()
+    j["answer"]=get_phrase()
     j["country_full_en"]=country_f
 
 
@@ -212,6 +214,45 @@ def new_data(country_f):
     json_object = json.dumps(j, indent = 4) 
     print(json_object)
     return json_object
+
+
+def ai(question):
+    print("----AI start---")
+#
+
+    print("Q: "+question)
+    a=[]
+    #question='Здравствуйте, я создам запрос, с вами свяжется ваш менеджер.'
+    words=question.replace(',','').replace('.','').replace('\n', '').lower().split()
+    for word in words:
+       if (len(word)>6):
+           print (word)
+           for d in data:
+               if word in d.lower():
+                   print(d)
+                   a.append(d)
+
+    if (len(a)>2):
+        answer=random.choice(a)
+    else:
+        answer=random.choice(data)
+    answer=answer.replace('\n', '')
+
+    if (answer==question):
+        answer=random.choice(data)
+
+    dice=random.randint(1,10)
+    if (dice==5):
+        answer=random.choice(data)
+
+    answer=answer.replace('\n', '')
+    print(answer)
+ 
+
+
+#    _log ("A: "+answer)
+#    _log ("-----AI END--------")
+    return (answer)
 
 
 
@@ -229,8 +270,19 @@ class RequestHandler(BaseHTTPRequestHandler):
             print("country   "+country_r)
             if country_r=="random":
                 country_r=random.choice(countries)
+        answer=None
+        if None != re.search('/api/ai/*', self.path):
+            print("ai request")
+            request_r = str(unquote(self.path.split('/')[-1]))
+            answer=ai(request_r)
+            
 
         json_object=new_data(country_r)
+        if None != answer:
+            j=json.loads(json_object)
+            j["answer"]=answer
+            json_object=json.dumps(j)
+            print(json_object)
         parsed_path = urlparse(self.path)
         self.send_response(200)
         self.end_headers()
