@@ -44,7 +44,7 @@ with open('phrases.txt', 'r',encoding="utf-8") as file:
 
 domains=['mail.ru','yandex.ru', 'rambler.ru', 'outlook.com', 'gmail.com', 'hotmail.com', 'list.ru', 'bk.ru', 'inbox.ru', 'internet.ru',\
 'yahoo.com', 'aol.com', 'e1.ru','inbox.lv', 'dino.lv','human.lv', 'fit.lv','sok.lv', 'eclub.lv', 'zohomail.com', 'protonmail.com', 'mail.com',\
-'mail.ru','yandex.ru', 'rambler.ru', 'outlook.com', 'gmail.com', 'hotmail.com','yahoo.com'\
+'mail.ru','yandex.ru', 'rambler.ru', 'outlook.com', 'gmail.com', 'hotmail.com','yahoo.com',\
  'cyberservices.com', 'protestant.com', 'ya.ru','box.az','byke.com','chez.com','email.ru','gmx.net','goldmail.ru',\
 'sendmail.ru','sendmail.com','gold.az','mail.lv','mail.lt','tyt.by','mail.by','rambler.lv','rambler.cz','outlook.ru','tut.by',\
 'mail.ru','yandex.ru', 'rambler.ru', 'outlook.com', 'gmail.com', 'hotmail.com','yahoo.com',\
@@ -177,13 +177,12 @@ def get_final_name(name, surname):
     return final_name
 
 
-def new_data():
+def new_data(country_f):
     name= get_name()
     surname=get_surname()
     final_name=get_final_name_from_name_surname(name, surname)
-    country='RU'
-    phone_full=get_phone_full(country)
-    phone_short=get_phone_short(country)
+    phone_full=get_phone_full(country_f)
+    phone_short=get_phone_short(country_f)
     email=get_email_from_final_name(final_name)
     password=get_password()
     final_name=get_final_name(name, surname)
@@ -200,6 +199,7 @@ def new_data():
     j["password"]=password
     j["phrase"]=get_phrase()
     j["phrase2"]=get_phrase()
+    j["country_full_en"]=country_f.replace("\n","")
     json_object = json.dumps(j, indent = 4) 
     print(json_object)
     return json_object
@@ -214,11 +214,14 @@ import json
 
 class RequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
+        country='Russia'
         if None != re.search('/api/country/*', self.path):
             country = str(self.path.split('/')[-1])
             print("country   "+country)
+            if country=="random":
+                country=random.choice(countries)
 
-        json_object=new_data()
+        json_object=new_data(country)
         parsed_path = urlparse(self.path)
         self.send_response(200)
         self.end_headers()
