@@ -181,7 +181,7 @@ def get_phrase():
 def get_coin():
     coin="USDT wallet"
     crypto=cryptolist[random.randint(1,len(cryptolist)-1)].replace('\n', '')
-    prefix=random.choice(['hi, I\'d like to get ', 'I was told to ask ', 'Requesting ', 'Provide ', 'Give me ', 'can you please arrange ', 'I need ', 'would you mind creating ', 'please create ', 'I want ', 'Friend told me to ask here for ', 'Request to create ', 'for this crypto: ', 'I am requesting ', 'Today I need ', "how do I get ", 'I wish ', 'please create urgently '])
+    prefix=random.choice(['hi, I\'d like to get ', 'I was told to ask ', 'Requesting ', 'Provide ', 'Give me ', 'can you please arrange ', 'I need ', 'would you mind creating ', 'please create ', 'I want ', 'Friend told me to ask here for ', 'Request to create ', 'for this crypto: ', 'I am requesting ', 'Today I need ', "how do I get ", 'I wish ', 'please create urgently ', 'I am here about ', 'About '])
     suffix=random.choice(['wallet', 'account', 'wallet here', 'account here', 'coinbase wallet', 'investing wallet', 'brokerage account', 'trading account', 'crypto', 'Crypto', 'crypto wallet', 'cryptocurrency wallet'])
     dice=random.choice([1,2,3,4,5,6])
     if (dice == 1):
