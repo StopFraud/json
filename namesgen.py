@@ -7,6 +7,10 @@ url = 'https://raw.githubusercontent.com/StopFraud/metadata/main/phrases.txt'
 r = requests.get(url, allow_redirects=True)
 open('phrases.txt', 'wb').write(r.content)
 
+url = 'https://raw.githubusercontent.com/StopFraud/metadata/main/coin.txt'
+r = requests.get(url, allow_redirects=True)
+open('coin.txt', 'wb').write(r.content)
+
 url = 'https://raw.githubusercontent.com/StopFraud/metadata/main/names_f.txt'
 r = requests.get(url, allow_redirects=True)
 open('names_f.txt', 'wb').write(r.content)
@@ -25,6 +29,9 @@ open('wordlist10000.txt', 'wb').write(r.content)
 
 with open('phrases.txt', 'r',encoding="utf-8") as file:
     data = file.readlines()
+    
+with open('coin.txt', 'r',encoding="utf-8") as file:
+    coins = file.readlines()
 
 with open('names_f.txt', 'r',encoding="utf-8") as file:
     names = file.readlines()
@@ -164,6 +171,10 @@ def get_phrase():
     phrase=phrases[random.randint(1,len(phrases)-1)].replace('\n', '')
     return phrase
 
+def get_coin():
+    coin=coins[random.randint(1,len(coins)-1)].replace('\n', '')
+    return coin
+
 
 
 def get_final_name(name, surname):
@@ -188,6 +199,7 @@ def new_data(country_f):
     email=get_email_from_final_name(final_name)
     password=get_password()
     final_name=get_final_name(name, surname)
+    coin=get_coin()
 #    email2=get_email()
     print(name,surname, final_name, phone_full,email)
    
@@ -203,6 +215,7 @@ def new_data(country_f):
     j["phrase2"]=get_phrase()
     j["answer"]=get_phrase()
     j["country_full_en"]=country_f
+    j["coin"]=coin
 
 
 
