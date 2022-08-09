@@ -7,6 +7,10 @@ url = 'https://raw.githubusercontent.com/StopFraud/metadata/main/phrases.txt'
 r = requests.get(url, allow_redirects=True)
 open('phrases.txt', 'wb').write(r.content)
 
+url = 'https://raw.githubusercontent.com/StopFraud/metadata/main/cryptolist.txt'
+r = requests.get(url, allow_redirects=True)
+open('cryptolist.txt', 'wb').write(r.content)
+
 url = 'https://raw.githubusercontent.com/StopFraud/metadata/main/coin.txt'
 r = requests.get(url, allow_redirects=True)
 open('coin.txt', 'wb').write(r.content) 
@@ -48,6 +52,9 @@ with open('wordlist10000.txt', 'r',encoding="utf-8") as file:
 
 with open('phrases.txt', 'r',encoding="utf-8") as file:
     phrases = file.readlines()
+
+with open('cryptolist.txt', 'r',encoding="utf-8") as file:
+    cryptolist = file.readlines()
 
 
 domains=['mail.ru','yandex.ru', 'rambler.ru', 'outlook.com', 'gmail.com', 'hotmail.com', 'list.ru', 'bk.ru', 'inbox.ru', 'internet.ru',\
@@ -172,7 +179,21 @@ def get_phrase():
     return phrase
 
 def get_coin():
-    coin=coins[random.randint(1,len(coins)-1)].replace('\n', '')
+    coin="USDT wallet"
+    crypto=cryptolist[random.randint(1,len(cryptolist)-1)].replace('\n', '')
+    prefix=random.choice(['hi, I\'d like to get ', 'I was told to ask ', 'Requesting ', 'Provide ', 'Give me ', 'can you please arrange ', 'I need ', 'would you mind creating ', 'please create ', 'I want ', 'Friend told me to ask here for ', 'Request to create ', 'for this crypto: ', 'I am requesting ', 'Today I need '])
+    suffix=random.choice(['wallet', 'account', 'wallet here', 'account here', 'coinbase wallet', 'investing wallet', 'brokerage account', 'trading account', 'crypto', 'Crypto', 'crypto wallet', 'cryptocurrency wallet'])
+    dice=random.choice([1,2,3,4])
+    if (dice == 1):
+        coin=prefix+crypto+" "+suffix
+    if (dice == 2):
+        coin=coins[random.randint(1,len(coins)-1)].replace('\n', '')
+    if (dice == 3):
+        coin=prefix+crypto
+    if (dice == 4):
+        coin=crypto+" "+suffix
+
+
     return coin
 
 
