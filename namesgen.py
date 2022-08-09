@@ -9,7 +9,7 @@ open('phrases.txt', 'wb').write(r.content)
 
 url = 'https://raw.githubusercontent.com/StopFraud/metadata/main/coin.txt'
 r = requests.get(url, allow_redirects=True)
-open('coin.txt', 'wb').write(r.content)
+open('coin.txt', 'wb').write(r.content) 
 
 url = 'https://raw.githubusercontent.com/StopFraud/metadata/main/names_f.txt'
 r = requests.get(url, allow_redirects=True)
