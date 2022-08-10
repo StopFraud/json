@@ -7,6 +7,14 @@ url = 'https://raw.githubusercontent.com/StopFraud/metadata/main/phrases.txt'
 r = requests.get(url, allow_redirects=True)
 open('phrases.txt', 'wb').write(r.content)
 
+url = 'https://raw.githubusercontent.com/StopFraud/metadata/main/english_first.txt'
+r = requests.get(url, allow_redirects=True)
+open('english_first.txt', 'wb').write(r.content)
+
+url = 'https://raw.githubusercontent.com/StopFraud/metadata/main/english_last.txt'
+r = requests.get(url, allow_redirects=True)
+open('english_last.txt', 'wb').write(r.content)
+
 url = 'https://raw.githubusercontent.com/StopFraud/metadata/main/cryptolist.txt'
 r = requests.get(url, allow_redirects=True)
 open('cryptolist.txt', 'wb').write(r.content)
@@ -56,6 +64,14 @@ with open('phrases.txt', 'r',encoding="utf-8") as file:
 with open('cryptolist.txt', 'r',encoding="utf-8") as file:
     cryptolist = file.readlines()
 
+with open('english_first.txt', 'r',encoding="utf-8") as file:
+    english_first = file.readlines()
+
+with open('english_last.txt', 'r',encoding="utf-8") as file:
+    english_last = file.readlines()
+
+
+
 
 domains=['mail.ru','yandex.ru', 'rambler.ru', 'outlook.com', 'gmail.com', 'hotmail.com', 'list.ru', 'bk.ru', 'inbox.ru', 'internet.ru',\
 'yahoo.com', 'aol.com', 'e1.ru','inbox.lv', 'dino.lv','human.lv', 'fit.lv','sok.lv', 'eclub.lv', 'zohomail.com', 'protonmail.com', 'mail.com',\
@@ -69,6 +85,14 @@ domains=['mail.ru','yandex.ru', 'rambler.ru', 'outlook.com', 'gmail.com', 'hotma
 'gmxmail.com','trustifi.com','mail.com','mailfence.com','outlook.ru','hotmail.ru','gmail.ru','fastmail.com','fastmail.ru','tutanota.com',\
 'posteo.com','mailbox.org','mailbox.com','mailbox.ru','zohomail.ru','kolabnow.com','pochta.ru','post.ru']
 
+
+def get_english_first():
+    english_first=english_first[random.randint(1,len(english_first)-1)].replace('\n', '')
+    return english_first
+
+def get_english_last():
+    english_last=english_last[random.randint(1,len(english_last)-1)].replace('\n', '')
+    return english_last
 
 
 def get_name():
@@ -91,6 +115,21 @@ def get_final_name():
     if (dice==3):
         final_name=surname+" "+name
     return final_name
+
+def get_final_english():
+    english_first1=english_first[random.randint(1,len(english_first)-1)].replace('\n', '')
+    english_last1=english_last[random.randint(1,len(english_last)-1)].replace('\n', '')
+    dice=random.choice([1,2,3])
+#    _log (dice)
+    if (dice==1):
+        final_name=english_first1
+    if (dice==2):
+        final_name=english_first1+" "+english_last1
+    if (dice==3):
+        final_name=english_last1+" "+english_first1
+    return final_name
+
+
 
 def get_final_name_from_name_surname(name, surname):
     dice=random.choice([1,2,3])
@@ -220,6 +259,7 @@ def new_data(country_f):
     email=get_email_from_final_name(final_name)
     password=get_password()
     final_name=get_final_name(name, surname)
+    final_english=get_final_english()
     coin=get_coin()
 #    email2=get_email()
     print(name,surname, final_name, phone_full,email)
@@ -237,6 +277,7 @@ def new_data(country_f):
     j["answer"]=get_phrase()
     j["country_full_en"]=country_f
     j["coin"]=coin
+    j["final_english"]=final_english
 
 
 
