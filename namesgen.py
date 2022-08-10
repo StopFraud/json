@@ -231,6 +231,9 @@ def get_coin():
         coin=prefix+crypto
     if (dice == 4):
         coin=crypto+" "+suffix
+    dice=random.choice([1,2,3,4,5,6,7])
+    if (dice==5):
+        coin="My name is "+ get_final_english()+", "+coin
 
 
     return coin
